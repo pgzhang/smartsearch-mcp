@@ -37,7 +37,39 @@ This server requires the `SERVER_KEY` environment variable to be set to your API
 
 To use this server with a client like OpenWebUI or Claude Desktop, add the following configuration. This example uses `npx` to run the server directly from the npm registry.
 
-**NPX Configuration:**
+## Development
+
+Install dependencies:
+```bash
+npm install
+```
+
+Build the server:
+```bash
+npm run build
+```
+
+For development with auto-rebuild:
+```bash
+npm run watch
+```
+
+
+## Installation
+
+### Installing via Smithery
+
+To install SmartSearch Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@adenot/mcp-google-search):
+
+```bash
+npx -y @smithery/cli install @adenot/mcp-google-search --client claude
+```
+
+To use with Claude Desktop, add the server config with your Google API credentials:
+
+On MacOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
+
 
 ```json
 {
