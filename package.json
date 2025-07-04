@@ -1,26 +1,28 @@
 {
   "name": "@pgzhang/smartsearch-mcp",
   "version": "0.1.0",
-  "description": "MCP server for a smart search API",
-  "license": "MIT",
+  "description": "A Model Context Protocol server for Cloudsway SmartSearch",
   "type": "module",
   "bin": {
-    "SmartSearch": "dist/index.js"
+    "smartsearch-mcp": "./build/index.js"
   },
   "files": [
-    "dist"
+    "build"
   ],
   "scripts": {
-    "build": "tsc && shx chmod +x dist/index.js",
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "prepare": "npm run build",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.1"
+    "@modelcontextprotocol/sdk": "0.6.0",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.2",
-    "shx": "^0.3.4",
-    "typescript": "^5.4.5"
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
   }
 }
