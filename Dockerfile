@@ -35,8 +35,8 @@ RUN npm ci --omit=dev
 # EXPOSE 8080
 
 # Define environment variables
-ENV SERVER_KEY=your-api-key-here
-
+ENV AK=your-ak-here
+ENV ENDPOINT=your-endpoint-here
 
 # Run the application
 ENTRYPOINT ["node", "build/index.js"]

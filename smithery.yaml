@@ -6,13 +6,17 @@ startCommand:
     # JSON Schema defining the configuration options for the MCP.
     type: object
     required:
-      - token
+      - ak
+      - endpoint
     properties:
-      token:
+      ak:
         type: string
-        description: The API key for SmartSearch Key.
-      
+        description: The access key for Cloudsway SmartSearch.
+      endpoint:
+        type: string
+        description: The endpoint for Cloudsway SmartSearch.
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => ({command: 'node', args: ['build/index.js'], env: {SERVER_KEY: config.token}})
+    (config) => ({command: 'node', args: ['build/index.js'], env: {AK: config.ak, ENDPOINT: config.endpoint}})
+

@@ -18,9 +18,6 @@ Executes a web search with filtering and pagination options.
 
 -   `query` (string): The search terms.
 -   `count` (number, optional): The number of results to return (default: 10).
--   `offset` (number, optional): The pagination offset (default: 0).
--   `setLang` (string, optional): The language for the search (e.g., 'en', 'zh', default: 'en').
--   `safeSearch` (string, optional): The safety level ('Strict', 'Moderate', 'Off', default: 'Strict').
 
 ## Configuration
 
@@ -59,10 +56,10 @@ npm run watch
 
 ### Installing via Smithery
 
-To install SmartSearch Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@adenot/mcp-google-search):
+To install SmartSearch Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@pgzhang/smartsearch-mcp):
 
 ```bash
-npx -y @smithery/cli install @adenot/mcp-google-search --client claude
+npx -y @smithery/cli install @pgzhang/smartsearch-mcp --client claude
 ```
 
 To use with Claude Desktop, add the server config with your Google API credentials:
@@ -81,13 +78,25 @@ On Windows: `%APPDATA%/Claude/claude_desktop_config.json`
         "@pgzhang/smartsearch-mcp"
       ],
       "env": {
-        "SERVER_KEY": "YOUR_API_KEY_HERE"
+        "AK": "YOUR_API_KEY_HERE",
+        "ENDPOINT": "YOUR_ENDPOINT_HERE"
       }
     }
   }
 }
 ```
+## Usage
 
+### Search Tool
+```json
+{
+  "name": "search",
+  "arguments": {
+    "query": "your search query",
+    "count": 5  // optional, default is 10, max is 50
+  }
+}
+```
 ## License
 
 This MCP server is released under the MIT License. See the LICENSE file for more details.
