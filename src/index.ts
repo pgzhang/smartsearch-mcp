@@ -23,7 +23,7 @@ if (!ENDPOINT) {
 
 
 interface SearchResult {
-  title: string;
+  name: string;
   url: string;
   snippet: string;
 }
@@ -67,11 +67,11 @@ class SearchServer {
     );
 
     this.axiosInstance = axios.create({
-      baseURL: 'https://searchapi.xiaosuai.com/search/${ENDPOINT}/smart',
+      baseURL: `https://searchapi.xiaosuai.com/search/${ENDPOINT}/smart`,
       headers: {
-        'Authorization': 'Bearer ${AK}',
+        'Authorization': `Bearer ${AK}`,
         'Content-Type': 'application/json',
-        'Parama': 'no-cache',
+        'Pargma': 'no-cache',
     },
     });
 
@@ -102,7 +102,7 @@ class SearchServer {
                 type: 'number',
                 description: 'Number of results (1-10)',
                 minimum: 1,
-                maximum: 10,
+                maximum: 50,
               },
             },
             required: ['query'],
@@ -126,12 +126,12 @@ class SearchServer {
           const response = await this.axiosInstance.get('', {
             params: {
               q: query,
-              count: Math.min(num, 10),
+              count: Math.min(num, 50),
             },
           });
 
           const results: SearchResult[] = response.data.items.map((item: any) => ({
-            title: item.title,
+            name: item.name,
             url: item.url,
             snippet: item.snippet,
           }));
